@@ -1,0 +1,8 @@
+__pycache__/
+.venv/
+*.qmlc
+*.jsc
+packaging/*.tar.gz
+packaging/*.pkg.tar.*
+packaging/src/
+packaging/pkg/

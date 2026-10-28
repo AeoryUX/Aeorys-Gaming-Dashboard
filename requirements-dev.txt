@@ -1,0 +1,2 @@
+# Optional Qt component smoke tests only. Runtime backend uses Python's standard library.
+PySide6-Essentials==6.8.3

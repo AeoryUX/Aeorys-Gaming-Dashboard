@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Aeory Gaming Dashboard
+Comment=Installed games and local troubleshooting for Caelestia
+Exec=aeory-gaming-dashboard toggle
+Icon=applications-games
+Terminal=false
+Categories=Game;
+StartupNotify=false

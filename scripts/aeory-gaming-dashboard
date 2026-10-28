@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+set -euo pipefail
+case "${1:-toggle}" in
+    toggle) exec bash /usr/share/aeory-gaming-dashboard/scripts/toggle.sh ;;
+    run) exec bash /usr/share/aeory-gaming-dashboard/scripts/run.sh ;;
+    check) exec bash /usr/share/aeory-gaming-dashboard/scripts/check-deps.sh ;;
+    *) echo 'Usage: aeory-gaming-dashboard [toggle|run|check]' >&2; exit 2 ;;
+esac

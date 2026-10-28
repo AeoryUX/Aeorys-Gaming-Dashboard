@@ -1,0 +1,44 @@
+# Maintainer: AeoryUX
+# Review candidate only: source release has not been published.
+pkgname=aeory-gaming-dashboard
+pkgver=0.1.0
+pkgrel=1
+pkgdesc='Local Steam gaming dashboard companion for Caelestia and Hyprland'
+arch=('any')
+url='https://github.com/AeoryUX/Aeorys-Gaming-Dashboard'
+license=('GPL-3.0-only')
+depends=('bash' 'python>=3.10' 'quickshell' 'qt6-declarative' 'hyprland')
+optdepends=('caelestia-shell: follow Caelestia colour and appearance settings'
+            'steam: launch games with native Steam'
+            'flatpak: launch Flatpak Steam and detect Sober'
+            'nvidia-utils: optional read-only NVIDIA resource readings')
+source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz"
+        'aeory-gaming-dashboard.desktop')
+sha256sums=('2f9fc31b7c7b9c406123a0f05b46ba27b0a36d7f65e1c7f237e3d7a2e1b52341'
+            '16d58324b642966931325eab42b81739aa0450bbc20db7497b44436e11d035f3')
+options=('!strip')
+
+check() {
+    cd "$srcdir/$pkgname-$pkgver"
+    python3 -m unittest discover -s tests -v
+    python3 -m compileall -q backend
+    local script
+    for script in scripts/*.sh scripts/aeory-gaming-dashboard; do
+        bash -n "$script" || return 1
+    done
+}
+
+package() {
+    cd "$srcdir/$pkgname-$pkgver"
+    local appdir="$pkgdir/usr/share/$pkgname"
+    install -dm755 "$appdir/backend" "$appdir/components" "$appdir/scripts"
+    install -m644 backend/*.py "$appdir/backend/"
+    install -m644 components/*.qml components/*.js "$appdir/components/"
+    install -m644 shell.qml "$appdir/"
+    install -m755 scripts/check-deps.sh scripts/run.sh scripts/toggle.sh "$appdir/scripts/"
+    install -Dm755 scripts/aeory-gaming-dashboard "$pkgdir/usr/bin/$pkgname"
+    install -Dm644 "$srcdir/aeory-gaming-dashboard.desktop" "$pkgdir/usr/share/applications/aeory-gaming-dashboard.desktop"
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+    install -m644 docs/*.md "$pkgdir/usr/share/doc/$pkgname/"
+}

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Aeory Gaming Dashboard
+Comment=Installed games and local troubleshooting
+Exec=bash "/ABSOLUTE/PATH/Aeorys-Gaming-Dashboard/scripts/toggle.sh"
+Icon=applications-games
+Terminal=false
+Categories=Game;
+StartupNotify=false

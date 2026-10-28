@@ -1,0 +1,23 @@
+pkgbase = aeory-gaming-dashboard
+	pkgdesc = Local Steam gaming dashboard companion for Caelestia and Hyprland
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/AeoryUX/Aeorys-Gaming-Dashboard
+	arch = any
+	license = GPL-3.0-only
+	depends = bash
+	depends = python>=3.10
+	depends = quickshell
+	depends = qt6-declarative
+	depends = hyprland
+	optdepends = caelestia-shell: follow Caelestia colour and appearance settings
+	optdepends = steam: launch games with native Steam
+	optdepends = flatpak: launch Flatpak Steam and detect Sober
+	optdepends = nvidia-utils: optional read-only NVIDIA resource readings
+	options = !strip
+	source = aeory-gaming-dashboard-0.1.0.tar.gz::https://github.com/AeoryUX/Aeorys-Gaming-Dashboard/releases/download/v0.1.0/aeory-gaming-dashboard-0.1.0.tar.gz
+	source = aeory-gaming-dashboard.desktop
+	sha256sums = 2f9fc31b7c7b9c406123a0f05b46ba27b0a36d7f65e1c7f237e3d7a2e1b52341
+	sha256sums = 16d58324b642966931325eab42b81739aa0450bbc20db7497b44436e11d035f3
+
+pkgname = aeory-gaming-dashboard
